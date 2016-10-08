@@ -1,0 +1,9 @@
+<h1>
+ this is NEW PAGE
+</h1>
+
+<%= form_for @book,url: books_path do |f| %>
+  <%= f.text_field :name %>
+  <%= f.select(:publisher_id,options_from_collection_for_select(Publisher.all,:id,:name,@book.publisher_id)) %>
+  <%= f.submit %>
+<% end %>

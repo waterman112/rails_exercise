@@ -1,0 +1,23 @@
+<h1>
+  THIS IS INDEX PAGE
+</h1>
+
+<table>
+  <tr>
+    <td>Book Name</td>
+
+    <td>Publisher Name</td>
+    <td>Edit</td>
+    <td>Delete</td>
+  </tr>
+
+  <!--这个地方的 = 等号 如果不显示的话，就不用 = （等号）-->
+<% @books.each do |book| %>
+  <tr>
+    <td><%= book.name %></td>
+    <td><%= Publisher.where("id = ?",book.publisher_id).first[:name] %></td>
+    <td></td>
+    <td></td>
+  </tr>
+<% end %>
+</table>
