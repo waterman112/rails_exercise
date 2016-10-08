@@ -1,0 +1,10 @@
+
+<h1>
+THIS IS EDIT PAGE
+</h1>
+
+<%= form_for @book,url: book_path,method: :patch  do |f| %>
+  <%= f.text_field :name %>
+  <%= f.select(:publisher_id,options_from_collection_for_select(Publisher.all,:id,:name,@book.publisher_id)) %>
+  <%= f.submit %>
+<% end %>

@@ -14,10 +14,21 @@
   <!--这个地方的 = 等号 如果不显示的话，就不用 = （等号）-->
 <% @books.each do |book| %>
   <tr>
+  <!--  <td><%= book.check_box()%></td> -->
     <td><%= book.name %></td>
-    <td><%= Publisher.where("id = ?",book.publisher_id).first[:name] %></td>
-    <td></td>
-    <td></td>
+    <td>
+      <!--
+      <% publisher =  Publisher.where("id = ?",book.publisher_id)[0].inspect%>
+      <% if publisher != nil %>
+        <%# publisher.name %>
+      <% end %>
+      <% publisher[:name] %>
+      <% publisher.try(:name)%>
+      -->
+      <%= book.publisher.try(:name)%>
+    </td>
+    <td><%= link_to 'Edit', edit_book_path(book) %></td>
+    <td><%= link_to 'Delete', book_path(book),method: :delete %> </td>
   </tr>
 <% end %>
 </table>

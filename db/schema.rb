@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008010257) do
+ActiveRecord::Schema.define(version: 20161008023433) do
 
   create_table "books", force: :cascade do |t|
-    t.string "name",         limit: 255
-    t.string "publisher_id", limit: 255
+    t.string  "name",         limit: 255
+    t.string  "publisher_id", limit: 255
+    t.boolean "check_box",    limit: 1
   end
 
   create_table "publishers", force: :cascade do |t|
