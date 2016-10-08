@@ -3,7 +3,22 @@
 </h1>
 
 <%= form_for @book,url: books_path do |f| %>
+  <%= f.file_field :name %>
+  <br/>
+  <%= f.check_box :check_box,{},checked_value="dongde",unchecked_value="no" %>
+  <br/>
+  <%= f.password_field :name %>
+  <br/>
+  <%= f.hidden_field :name %>
+  <br/>
+  <%= f.radio_button :name,"man"  %>
+  <br/>
   <%= f.text_field :name %>
+  <br/>
+  <%= f.text_area :name %>
+  <br/>
   <%= f.select(:publisher_id,options_from_collection_for_select(Publisher.all,:id,:name,@book.publisher_id)) %>
+  <br/>
   <%= f.submit %>
 <% end %>
+

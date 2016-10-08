@@ -1,3 +1,8 @@
+<style>
+td{
+  border:1px solid red;
+}
+</style>
 <h1>
   THIS IS INDEX PAGE
 </h1>
@@ -7,8 +12,10 @@
     <td>Book Name</td>
 
     <td>Publisher Name</td>
+    <td>Show</td>
     <td>Edit</td>
     <td>Delete</td>
+    <td>New</td>
   </tr>
 
   <!--这个地方的 = 等号 如果不显示的话，就不用 = （等号）-->
@@ -17,18 +24,12 @@
   <!--  <td><%= book.check_box()%></td> -->
     <td><%= book.name %></td>
     <td>
-      <!--
-      <% publisher =  Publisher.where("id = ?",book.publisher_id)[0].inspect%>
-      <% if publisher != nil %>
-        <%# publisher.name %>
-      <% end %>
-      <% publisher[:name] %>
-      <% publisher.try(:name)%>
-      -->
-      <%= book.publisher.try(:name)%>
+      <%=  Publisher.where("id = ?",book.publisher_id).first.id %>
     </td>
+    <td><%= link_to 'Show', book_path(book)  %></td>
     <td><%= link_to 'Edit', edit_book_path(book) %></td>
     <td><%= link_to 'Delete', book_path(book),method: :delete %> </td>
+    <td><%= link_to 'New', new_book_path  %></td>
   </tr>
 <% end %>
 </table>

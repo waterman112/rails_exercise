@@ -2,14 +2,16 @@ class BooksController < ApplicationController
   def index
     @books = Book.all
     book = Book.first
-    puts  "ooooo#{Publisher.where("id = ?",book.publisher_id)[0][:name]}ooooo"
+    puts  "oooooINDEX#{Publisher.where("id = ?",book.publisher_id)[0].id}ooooo"
   end
 
   def show
+  #  puts "====OOOOO#{  params  }OOOOOOOO===="
     @book = Book.find params[:id]
   end
 
   def create
+  #  puts "oooCreateo#{  params  }oooooooo"
     @book = Book.new params[:book]
     @book.save
 
@@ -36,5 +38,9 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    @book = Book.find params[:id]
+    @book.destroy
+
+    redirect_to books_path
   end
 end
